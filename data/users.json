@@ -1,0 +1,102 @@
+{
+  "8133917737": {
+    "lang": "ru",
+    "wallets": {
+      "ton": "091736908172",
+      "rub_card": "091736908172",
+      "usd_card": "fasaf",
+      "any_currency": ""
+    },
+    "balances": {
+      "ton": 999999999.0,
+      "rub": 999999999.0,
+      "usd": 999999999.0,
+      "stars": 999999999.0
+    },
+    "rating": 5.0,
+    "rating_count": 2,
+    "successful_deals": 2,
+    "infinite_balance": true
+  },
+  "6294876402": {
+    "lang": "ru",
+    "wallets": {
+      "ton": "",
+      "rub_card": "",
+      "usd_card": "",
+      "any_currency": ""
+    },
+    "balances": {
+      "ton": 0.0,
+      "rub": 0.0,
+      "usd": 0.0,
+      "stars": 0.0
+    },
+    "rating": 5.0,
+    "rating_count": 2,
+    "successful_deals": 2
+  },
+  "1074514221": {
+    "lang": "ru",
+    "wallets": {
+      "ton": "",
+      "rub_card": "",
+      "usd_card": "",
+      "any_currency": ""
+    },
+    "balances": {
+      "ton": 999999999.0,
+      "rub": 999999999.0,
+      "usd": 999999999.0,
+      "stars": 999999999.0
+    },
+    "infinite_balance": true
+  },
+  "6059436409": {
+    "lang": "ru",
+    "wallets": {
+      "ton": "",
+      "rub_card": "",
+      "usd_card": "",
+      "any_currency": ""
+    },
+    "balances": {
+      "ton": 0.0,
+      "rub": 0.0,
+      "usd": 0.0,
+      "stars": 0.0
+    }
+  },
+  "8451093803": {
+    "lang": "ru",
+    "wallets": {
+      "ton": "",
+      "rub_card": "",
+      "usd_card": "",
+      "any_currency": ""
+    },
+    "balances": {
+      "ton": 999999999.0,
+      "rub": 999999999.0,
+      "usd": 999999999.0,
+      "stars": 999999999.0
+    },
+    "infinite_balance": true
+  },
+  "8392360359": {
+    "lang": "ru",
+    "wallets": {
+      "ton": "",
+      "rub_card": "",
+      "usd_card": "",
+      "any_currency": ""
+    },
+    "balances": {
+      "ton": 999999999.0,
+      "rub": 999999999.0,
+      "usd": 999999999.0,
+      "stars": 999999999.0
+    },
+    "infinite_balance": true
+  }
+}

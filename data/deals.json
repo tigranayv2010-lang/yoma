@@ -1,0 +1,80 @@
+{
+  "1": {
+    "seller_id": 8133917737,
+    "product": "eSDF",
+    "price": 1000.0,
+    "paid": false,
+    "payment_details": "Счёт: 1234567890"
+  },
+  "2": {
+    "seller_id": 8133917737,
+    "product": "гадсфа",
+    "price": 12334.0,
+    "paid": false,
+    "payment_details": "Счёт: 1234567890"
+  },
+  "3": {
+    "seller_id": 8133917737,
+    "product": "jsjsns",
+    "price": 1000.0,
+    "paid": true,
+    "payment_details": "Счёт: 1234567890",
+    "buyer_id": 6294876402,
+    "gift_confirmed": true
+  },
+  "4": {
+    "seller_id": 8133917737,
+    "product": "kakaaka",
+    "price": 1927811.0,
+    "paid": true,
+    "payment_details": "Счёт: 1234567890",
+    "buyer_id": 6294876402,
+    "gift_confirmed": true,
+    "completed": true,
+    "rated_seller_by_6294876402": true,
+    "rated_buyer_by_8133917737": true
+  },
+  "5": {
+    "seller_id": 1074514221,
+    "product": "Носок",
+    "price": 600.0,
+    "paid": true,
+    "payment_details": "Счёт: 1234567890",
+    "buyer_id": 6294876402,
+    "gift_confirmed": true
+  },
+  "6": {
+    "seller_id": 8133917737,
+    "product": "асава",
+    "price": 12345.0,
+    "currency": "usdt",
+    "currency_label": "USDT",
+    "paid": true,
+    "payment_details": "fasaf",
+    "buyer_id": 6294876402,
+    "gift_confirmed": true,
+    "completed": true,
+    "rated_buyer_by_8133917737": true,
+    "rated_seller_by_6294876402": true
+  },
+  "7": {
+    "seller_id": 6294876402,
+    "product": "Пепе",
+    "price": 1000.0,
+    "currency": "stars",
+    "currency_label": "Stars",
+    "paid": true,
+    "payment_details": "не указан — укажите реквизиты в разделе 💳 Реквизиты",
+    "buyer_id": 6059436409,
+    "gift_confirmed": true
+  },
+  "8": {
+    "seller_id": 6294876402,
+    "product": "Пепе",
+    "price": 1000.0,
+    "currency": "rub",
+    "currency_label": "RUB",
+    "paid": false,
+    "payment_details": "не указан — укажите реквизиты в разделе 💳 Реквизиты"
+  }
+}
