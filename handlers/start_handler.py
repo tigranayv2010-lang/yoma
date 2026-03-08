@@ -158,8 +158,36 @@ def register_start_handler(bot):
         save_json("data/deals.json", deals)
         bot.answer_callback_query(call.id, "✅ Оплата подтверждена!", show_alert=True)
 
+        # Сохраняем username покупателя
+        try:
+            from utils import load_json as _lj, save_json as _sj
+            _users = _lj("data/users.json")
+            _uid = str(cid)
+            if _uid in _users and call.from_user.username:
+                _users[_uid]["username"] = f"@{call.from_user.username}"
+                _sj("data/users.json", _users)
+        except Exception:
+            pass
+
         # Инфо о покупателе для продавца
         buyer_username, buyer_deals, buyer_rating = _get_user_info(bot, cid)
+
+        currency_label = deal.get("currency_label", "RUB")
+
+        # ── Новое уведомление покупателю об успешной оплате ──
+        seller_username, seller_deals, seller_rating = _get_user_info(bot, deal["seller_id"])
+        bot.send_message(
+            cid,
+            f"💳 Оплата подтверждена!\n"
+            f"▸ Сделка: #{deal_id}\n"
+            f"▸ Продавец: {seller_username}\n"
+            f"▸ Успешных сделок у продавца: {seller_deals}\n"
+            f"▸ Рейтинг продавца: {seller_rating:.1f}/5\n"
+            f"▸ Сумма: {deal['price']} {currency_label}\n"
+            f"▸ Описание: {deal['product']}\n\n"
+            f"Ожидайте, продавец отправит подарок менеджеру {MANAGER_USERNAME} для проверки.\n\n"
+            f"⏳ Ожидайте уведомления о передаче подарка."
+        )
 
         # ── Сообщение продавцу ──
         seller_id = deal["seller_id"]
