@@ -79,3 +79,16 @@ def save_user_field(user_id, field: str, value):
         users = load_json(USERS_PATH)
     users[uid][field] = value
     save_json(USERS_PATH, users)
+
+
+def save_username(user_id, username: str):
+    """Сохраняет @username пользователя в базу. Вызывать при каждом /start."""
+    if not username:
+        return
+    users = load_json(USERS_PATH)
+    uid = str(user_id)
+    if uid not in users:
+        get_user_data(user_id)
+        users = load_json(USERS_PATH)
+    users[uid]["username"] = f"@{username.lstrip('@')}"
+    save_json(USERS_PATH, users)
