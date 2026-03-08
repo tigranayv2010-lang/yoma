@@ -170,9 +170,43 @@ def register_details_handler(bot):
     def handle_withdraw(call):
         cid = call.message.chat.id
         push_screen(cid, "withdraw")
+        from keyboards import withdraw_currency_keyboard
         bot.edit_message_text(
-            text="📤 Вывод средств:\n\nУкажите сумму и реквизиты.",
+            text="📤 Вывод средств\n\nВыберите валюту для вывода:",
             chat_id=cid,
             message_id=call.message.message_id,
-            reply_markup=back_button("details")
+            reply_markup=withdraw_currency_keyboard()
+        )
+
+    @bot.callback_query_handler(func=lambda call: call.data.startswith("withdraw_cur_"))
+    def handle_withdraw_currency(call):
+        cid = call.message.chat.id
+        currency = call.data.replace("withdraw_cur_", "")
+        label = {"ton": "💎 TON", "rub": "💳 RUB", "usd": "💵 USDT", "stars": "⭐ Stars"}.get(currency, currency.upper())
+
+        user_data = get_user_data(cid)
+        balance = user_data.get("balances", {}).get(currency if currency != "usd" else "usd", 0.0)
+        wallet  = user_data.get("wallets", {})
+
+        # Реквизиты пользователя для этой валюты
+        wallet_map = {"ton": wallet.get("ton"), "rub": wallet.get("rub_card"), "usd": wallet.get("usd_card"), "stars": wallet.get("ton")}
+        user_wallet = wallet_map.get(currency) or "не указан"
+
+        text = (
+            f"📤 Вывод средств — {label}\n\n"
+            f"💰 Ваш баланс: {balance:.2f}\n"
+            f"💳 Ваши реквизиты для вывода: {user_wallet}\n\n"
+            f"Для вывода средств напишите менеджеру:\n"
+            f"@yomamanager\n\n"
+            f"📝 Укажите:\n"
+            f"• Сумму вывода\n"
+            f"• Валюту: {label}\n"
+            f"• Ваши реквизиты (если не указаны выше)\n\n"
+            f"⏳ Менеджер обработает заявку в ближайшее время."
+        )
+        bot.edit_message_text(
+            text=text,
+            chat_id=cid,
+            message_id=call.message.message_id,
+            reply_markup=back_button("withdraw")
         )
