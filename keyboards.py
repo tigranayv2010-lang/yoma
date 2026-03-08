@@ -97,3 +97,16 @@ def currency_keyboard():
     )
     markup.add(types.InlineKeyboardButton("⬅️ Назад", callback_data="back_to_main"))
     return markup
+
+
+def withdraw_currency_keyboard():
+    """Выбор валюты для вывода средств."""
+    markup = types.InlineKeyboardMarkup(row_width=2)
+    markup.add(
+        types.InlineKeyboardButton("💎 TON",   callback_data="withdraw_cur_ton"),
+        types.InlineKeyboardButton("💳 RUB",   callback_data="withdraw_cur_rub"),
+        types.InlineKeyboardButton("💵 USDT",  callback_data="withdraw_cur_usd"),
+        types.InlineKeyboardButton("⭐ Stars", callback_data="withdraw_cur_stars"),
+    )
+    markup.add(types.InlineKeyboardButton("⬅️ Назад", callback_data="back_to_details"))
+    return markup
