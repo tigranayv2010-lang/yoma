@@ -1,4 +1,4 @@
-from utils import load_json, save_json, get_user_data, reset_stack
+from utils import load_json, save_json, get_user_data, reset_stack, save_username
 from handlers.details import add_balance
 from config import PAYMENT_DETAILS, MANAGER_USERNAME
 from messages import MESSAGES
@@ -49,6 +49,9 @@ def register_start_handler(bot):
     def send_welcome(message):
         cid = message.chat.id
         reset_stack(cid)
+        # Сохраняем username чтобы менеджер мог искать по @username
+        if message.from_user.username:
+            save_username(cid, message.from_user.username)
         user_data = get_user_data(cid)
         lang = user_data.get("lang", "ru")
 
