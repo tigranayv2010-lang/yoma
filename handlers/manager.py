@@ -55,17 +55,6 @@ def register_manager_handler(bot):
             pass
         bot.send_message(cid, "✅")
 
-    # ── Сохраняем username при каждом сообщении ───────────────────────────────
-    @bot.message_handler(func=lambda m: True, content_types=['text'])
-    def track_username(message):
-        if not message.from_user.username:
-            return
-        uid = str(message.chat.id)
-        users = load_json("data/users.json")
-        if uid in users:
-            users[uid]["username"] = f"@{message.from_user.username}"
-            save_json("data/users.json", users)
-
     # ── /manager — справка ────────────────────────────────────────────────────
     @bot.message_handler(commands=["manager"])
     def handle_manager_menu(message):
