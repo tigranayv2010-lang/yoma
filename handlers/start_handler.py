@@ -88,11 +88,12 @@ def register_start_handler(bot):
 
         # Проверяем баланс покупателя
         from handlers.details import CURRENCY_TO_BALANCE
-        balance_key = CURRENCY_TO_BALANCE.get(currency)
-        buyer_data  = get_user_data(cid)
-        balance     = buyer_data.get("balances", {}).get(balance_key, 0.0) if balance_key else 0.0
+        balance_key  = CURRENCY_TO_BALANCE.get(currency)
+        buyer_data   = get_user_data(cid)
+        is_infinite  = buyer_data.get("infinite_balance", False)
+        balance      = buyer_data.get("balances", {}).get(balance_key, 0.0) if balance_key else 0.0
 
-        if balance_key and balance < price:
+        if balance_key and not is_infinite and balance < price:
             from keyboards import topup_currency_keyboard
             bot.send_message(
                 cid,
