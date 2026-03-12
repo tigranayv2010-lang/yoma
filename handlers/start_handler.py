@@ -1,6 +1,7 @@
-from utils import load_json, save_json, get_user_data, reset_stack, save_username
+from utils import safe_edit, load_json, save_json, get_user_data, reset_stack, save_username
+from config import PAYMENT_DETAILS, MANAGER_USERNAME, IMAGE_URL
 from handlers.details import add_balance
-from config import PAYMENT_DETAILS, MANAGER_USERNAME
+
 from messages import MESSAGES
 from keyboards import (
     main_menu_keyboard, back_button,
@@ -62,7 +63,17 @@ def register_start_handler(bot):
                 handle_deal_link(message, deal_id, lang)
                 return
 
-        bot.send_message(cid, MESSAGES[lang]['welcome'], reply_markup=main_menu_keyboard(lang))
+        try:
+            with open(IMAGE_URL, 'rb') as photo:
+                bot.send_photo(
+                    cid,
+                    photo,
+                    caption=MESSAGES[lang]['welcome'],
+                    reply_markup=main_menu_keyboard(lang)
+                )
+        except Exception:
+            # Если картинка не найдена — отправляем без неё
+            bot.send_message(cid, MESSAGES[lang]['welcome'], reply_markup=main_menu_keyboard(lang))
 
     # ──────────────────────────────────────────────────────────────
     # Покупатель открыл ссылку на сделку
@@ -164,7 +175,7 @@ def register_start_handler(bot):
 
         # Сохраняем username покупателя
         try:
-            from utils import load_json as _lj, save_json as _sj
+            from utils import safe_edit, load_json as _lj, save_json as _sj
             _users = _lj("data/users.json")
             _uid = str(cid)
             if _uid in _users and call.from_user.username:
@@ -195,12 +206,13 @@ def register_start_handler(bot):
 
         # ── Сообщение продавцу ──
         seller_id = deal["seller_id"]
+        deal_currency_label = deal.get("currency_label", "RUB")
         seller_text = (
             f"✅ Оплата подтверждена для сделки #{deal_id}\n"
             f"▫️ Покупатель: {buyer_username}\n"
             f"▫️ Успешных сделок: {buyer_deals}\n"
             f"▫️ Рейтинг: {buyer_rating:.1f}/5\n"
-            f"▫️ Сумма: {deal['price']} руб\n"
+            f"▫️ Сумма: {deal['price']} {deal_currency_label}\n"
             f"▫️ Описание: {deal['product']}\n\n"
             f"❗️ Пожалуйста, передайте NFT-подарок:\n"
             f"Только менеджеру бота для обработки:\n"
