@@ -24,7 +24,7 @@ ADMIN_ID = int(os.getenv("ADMIN_ID", "0"))
 
 bot = Bot(token=BOT_TOKEN)
 dp = Dispatcher()
-crypto_client = AioCryptoPay(token=CRYPTO_BOT_TOKEN, network=Networks.MAIN_NET)
+crypto_client = None
 
 # --- БАЗА ДАННЫХ ---
 def init_db():
@@ -534,6 +534,8 @@ async def admin_broadcast_process(message: types.Message, state: FSMContext):
     await state.clear()
 
 async def main():
+    global crypto_client
+    crypto_client = AioCryptoPay(token=CRYPTO_BOT_TOKEN, network=Networks.MAIN_NET)
     init_db()
     print("Бот запускается... Нажмите Ctrl+C для остановки.")
     await dp.start_polling(bot)
