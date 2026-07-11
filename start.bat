@@ -1,0 +1,6 @@
+@echo off
+echo Установка зависимостей...
+py -m pip install -r requirements.txt
+echo Запуск бота...
+py bot.py
+pause
