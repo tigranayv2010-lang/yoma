@@ -2,3 +2,4 @@ aiogram
 aiocryptopay
 aiohttp
 python-dotenv
+aiosqlite
