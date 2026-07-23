@@ -55,6 +55,27 @@ TEXTS = {
             "📲 Скопируйте ссылку и вставьте в приложение (v2rayNG, Hiddify, V2Ray Tun и др.)"
         ),
         "vpn_error": "❌ Ошибка при создании VPN. Деньги возвращены на баланс.",
+        
+        # Reseller
+        "btn_digital": "🛒 Цифровые товары",
+        "reseller_list": "🛒 <b>Цифровые товары</b>\nВыберите товар для просмотра:",
+        "reseller_product_info": (
+            "📦 <b>{name}</b>\n\n"
+            "📝 Описание:\n{desc}\n\n"
+            "📊 В наличии: <b>{stock} шт.</b>\n"
+            "💵 Цена: <b>{price:.2f} USDT</b>"
+        ),
+        "btn_buy_product": "💳 Купить ({price:.2f} USDT)",
+        "reseller_no_balance": "❌ <b>Недостаточно средств!</b>\n\nСтоимость: <b>{total:.2f} USDT</b>\nВаш баланс: <b>{balance:.2f} USDT</b>",
+        "reseller_out_of_stock": "❌ Товар закончился или недоступен.",
+        "reseller_buy_success": (
+            "🎉 <b>Товар успешно куплен!</b>\n\n"
+            "📦 Товар: {name}\n"
+            "💵 Списано: {price:.2f} USDT\n\n"
+            "👇 <b>Ваш товар:</b>\n"
+            "<code>{item}</code>\n\n"
+            "<i>Спасибо за покупку!</i>"
+        )
     },
     "en": {
         "welcome": "👋 <b>Hello! This is a universal shop.</b>\n\n💳 Your balance: <b>{balance:.2f} USDT</b>\n\nChoose a category:",
@@ -112,5 +133,26 @@ TEXTS = {
             "📲 Copy the link and paste it into your app (v2rayNG, Hiddify, V2Ray Tun, etc.)"
         ),
         "vpn_error": "❌ Error creating VPN. Funds returned to your balance.",
+        
+        # Reseller
+        "btn_digital": "🛒 Digital Products",
+        "reseller_list": "🛒 <b>Digital Products</b>\nChoose a product to view:",
+        "reseller_product_info": (
+            "📦 <b>{name}</b>\n\n"
+            "📝 Description:\n{desc}\n\n"
+            "📊 In stock: <b>{stock} pcs</b>\n"
+            "💵 Price: <b>{price:.2f} USDT</b>"
+        ),
+        "btn_buy_product": "💳 Buy ({price:.2f} USDT)",
+        "reseller_no_balance": "❌ <b>Insufficient funds!</b>\n\nCost: <b>{total:.2f} USDT</b>\nYour balance: <b>{balance:.2f} USDT</b>",
+        "reseller_out_of_stock": "❌ Product is out of stock or unavailable.",
+        "reseller_buy_success": (
+            "🎉 <b>Product successfully purchased!</b>\n\n"
+            "📦 Item: {name}\n"
+            "💵 Deducted: {price:.2f} USDT\n\n"
+            "👇 <b>Your product:</b>\n"
+            "<code>{item}</code>\n\n"
+            "<i>Thank you for your purchase!</i>"
+        )
     }
 }

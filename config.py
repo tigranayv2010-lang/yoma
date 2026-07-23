@@ -27,3 +27,18 @@ DEFAULT_PRICE_VPN_1M = float(os.getenv("DEFAULT_PRICE_VPN_1M", "1.5"))
 DEFAULT_PRICE_VPN_3M = float(os.getenv("DEFAULT_PRICE_VPN_3M", "4.0"))
 DEFAULT_PRICE_VPN_6M = float(os.getenv("DEFAULT_PRICE_VPN_6M", "7.5"))
 DEFAULT_PRICE_VPN_12M = float(os.getenv("DEFAULT_PRICE_VPN_12M", "14.0"))
+
+# --- Reseller API ---
+RESELLER_API_KEY = os.getenv("RESELLER_API_KEY", "sb_a8ef337cf2ac4991bd83bfe2c21c8acee2263811f809ca73")
+RESELLER_BASE_URL = os.getenv("RESELLER_BASE_URL", "https://worker-production-53ca.up.railway.app")
+
+# Reseller products mapping (id: sell_price)
+RESELLER_PRICES = {
+    1: 0.60,  # Gemini
+    13: 2.10, # Chat GPT
+    20: 1.20, # Quillbot
+    23: 1.40, # Youtube
+    24: 2.40, # Capcut
+    27: 2.10  # Canva
+}
+RESELLER_EXCLUDE_IDS = [6, 30]

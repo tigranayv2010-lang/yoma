@@ -39,7 +39,8 @@ async def process_top_up_amount(message: types.Message, state: FSMContext):
     await state.clear()
     
     try:
-        from bot import crypto_client
+        from crypto import get_crypto
+        crypto_client = get_crypto()
         invoice = await crypto_client.create_invoice(asset='USDT', amount=amount)
         
         kb = [
@@ -64,7 +65,8 @@ async def check_payment(callback: types.CallbackQuery):
     amount = float(parts[3])
     
     try:
-        from bot import crypto_client
+        from crypto import get_crypto
+        crypto_client = get_crypto()
         result = await crypto_client.get_invoices(invoice_ids=invoice_id)
         
         if isinstance(result, list):
