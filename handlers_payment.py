@@ -42,7 +42,7 @@ async def process_top_up_amount(message: types.Message, state: FSMContext):
     try:
         from crypto import get_crypto
         crypto_client = get_crypto()
-        invoice = await crypto_client.create_invoice(fiat='USD', amount=amount)
+        invoice = await crypto_client.create_invoice(fiat='USD', amount=amount, currency_type='fiat')
         
         kb = [
             [InlineKeyboardButton(text=t["btn_pay"], url=invoice.bot_invoice_url)],
