@@ -19,7 +19,8 @@ async def top_up_handler(callback: types.CallbackQuery, state: FSMContext):
     t = TEXTS[lang]
     
     await callback.answer()
-    await callback.message.answer(t["topup_ask"], parse_mode="HTML")
+    from utils import send_menu_photo
+    await send_menu_photo(callback, "images/balance.png", t["topup_ask"], None)
     await state.set_state(TopUpState.amount)
 
 @router.message(TopUpState.amount)
